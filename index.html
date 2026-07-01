@@ -1,554 +1,636 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Pranay Kumar Portfolio</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<!--
+  ============================================================================
+   PRANAY KUMAR — PORTFOLIO WEBSITE
+  ============================================================================
+   HOW TO EDIT THIS FILE
+   Press Ctrl-F (or Cmd-F on Mac) and search the label to jump to a section.
+   Every section below is wrapped in a banner like:  === SECTION: ABOUT ===
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+   SECTION MAP (search any of these):
+     SECTION: STYLES ......... all colors, fonts, layout, responsive rules
+        > look for "COLORS & FONTS" to change the color scheme
+     SECTION: NAVBAR ......... top menu bar + mobile hamburger menu
+     SECTION: HERO ........... big headline at the top ("Building AI...")
+     SECTION: ABOUT .......... the About paragraphs + quick-facts box
+     SECTION: WORK ........... research & experience timeline
+     SECTION: FOCUS .......... "What I Work On" cards + skills/tags
+     SECTION: LEARNING ....... coursework + presentations/workshops
+     SECTION: GOALS .......... "Where I'm Headed" cards
+     SECTION: CONTACT ........ contact links + footer
+     SECTION: SCRIPTS ........ JavaScript (menu, animations)
 
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-
-
-
+   COMMON EDITS:
+     - Change a color .......... search "COLORS & FONTS", edit the hex values
+     - Fix a link .............. search "SECTION: CONTACT"
+     - Edit the headline ....... search "SECTION: HERO"
+     - Add a job/experience .... search "SECTION: WORK", copy a <div class="node"> block
+     - Add a skill tag ......... search "SECTION: FOCUS", copy a <span class="chip"> tag
+  ============================================================================
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0e14">
+<title>Pranay Kumar — AI Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- ========================================================================
+     === SECTION: STYLES ===  (all colors, fonts, layout, responsive rules)
+     ======================================================================== -->
 <style>
-
-/*======================================
-//--//-->   ABOUT
-======================================*/
-
-.about-mf .box-shadow-full {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.about-mf .about-img {
-  margin-bottom: 2rem;
-}
-
-.about-mf .about-img img {
-  margin-left: 10px;
-}
-
-
-.skill-mf .progress {
-  /* background-color: #cde1f8; */
-  margin: .5rem 0 1.2rem 0;
-  border-radius: 0;
-  height: .7rem;
-}
-
-.skill-mf .progress .progress-bar {
-  height: .7rem;
-  background-color: #ffbd39;
-}
-
-
-/* Animation styles */
-#typing-animation {
-  position: relative;
-  font-size: 30px;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 3s steps(20, end) infinite;
-}
-
-#typing-animation:before {
-  content: "";
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #ccc;
-  animation: typing-cursor 0.5s ease-in-out infinite;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
+  /* ---- COLORS & FONTS ---- (change the color scheme here) */
+  :root{
+    --bg:#0a0e14;
+    --bg-soft:#0f141c;
+    --panel:#121822;
+    --line:#1e2733;
+    --line-bright:#2b3746;
+    --ink:#e6edf3;
+    --ink-dim:#8b98a8;
+    --ink-faint:#5a6675;
+    --accent:#4ade80;
+    --accent-dim:#1f5c3a;
+    --amber:#fbbf24;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
   }
-  to {
-    width: 100%;
+
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
-}
 
-@keyframes typing-cursor {
-  from {
-    width: 5px;
+  img,svg{max-width:100%;height:auto}
+
+  ::selection{background:var(--accent);color:#04120a}
+
+  .wrap{
+    max-width:1080px;margin:0 auto;
+    padding-left:max(24px,env(safe-area-inset-left));
+    padding-right:max(24px,env(safe-area-inset-right));
   }
-  to {
-    width: 0;
+  @media(min-width:768px){.wrap{padding-left:32px;padding-right:32px}}
+
+  /* ---------- ambient grid ---------- */
+  .grid-bg{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:56px 56px;
+    opacity:.35;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 20%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 20%,transparent 75%);
   }
-}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(12px);
+    background:rgba(10,14,20,.72);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s;
+  }
+  nav.scrolled{border-bottom-color:var(--line)}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:16px max(24px,env(safe-area-inset-left)) 16px max(24px,env(safe-area-inset-right));display:flex;justify-content:space-between;align-items:center}
+  @media(min-width:768px){.nav-inner{padding-left:32px;padding-right:32px}}
+  .brand{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .nav-links{display:flex;gap:28px;font-family:var(--mono);font-size:13px}
+  .nav-links a{color:var(--ink-dim);text-decoration:none;transition:color .2s;position:relative}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--accent);transition:width .25s}
+  .nav-links a:hover::after{width:100%}
+
+  /* hamburger */
+  .menu-btn{display:none;background:none;border:1px solid var(--line-bright);border-radius:8px;padding:9px 11px;cursor:pointer;flex-direction:column;gap:4px}
+  .menu-btn span{display:block;width:19px;height:2px;background:var(--ink);border-radius:2px;transition:transform .28s,opacity .2s}
+  .menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+  @media(max-width:640px){
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:0;
+      background:rgba(10,14,20,.97);backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+      padding:8px max(24px,env(safe-area-inset-left));
+      max-height:0;overflow:hidden;
+      transition:max-height .32s ease,padding .32s ease;
+      font-size:15px;
+    }
+    .nav-links.open{max-height:340px;padding-top:12px;padding-bottom:18px}
+    .nav-links a{padding:13px 2px;border-bottom:1px solid var(--line)}
+    .nav-links a:last-child{border-bottom:none}
+    .nav-links a::after{display:none}
+    .menu-btn{display:flex}
+  }
+
+  /* ---------- hero ---------- */
+  header{position:relative;z-index:1;padding:170px 0 90px}
+  .eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.04em;margin-bottom:26px;opacity:0;animation:fadeUp .7s .1s forwards}
+  .eyebrow .bracket{color:var(--ink-faint)}
+  h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(2.7rem,7vw,5.4rem);
+    line-height:.98;
+    letter-spacing:-.035em;
+    margin-bottom:30px;
+  }
+  h1 .line{display:block;overflow:hidden}
+  h1 .line span{display:block;opacity:0;transform:translateY(105%);animation:reveal .85s cubic-bezier(.16,1,.3,1) forwards}
+  h1 .line:nth-child(1) span{animation-delay:.15s}
+  h1 .line:nth-child(2) span{animation-delay:.28s}
+  h1 .glow{color:var(--accent);text-shadow:0 0 40px rgba(74,222,128,.35)}
+  @keyframes reveal{to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+  .lede{max-width:620px;font-size:1.12rem;color:var(--ink-dim);margin-bottom:38px;opacity:0;animation:fadeUp .7s .55s forwards}
+  .lede strong{color:var(--ink);font-weight:500}
+
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .7s forwards}
+  .btn{
+    font-family:var(--mono);font-size:13px;font-weight:500;
+    padding:12px 22px;border-radius:8px;text-decoration:none;
+    display:inline-flex;align-items:center;gap:9px;transition:all .22s;
+  }
+  .btn-solid{background:var(--accent);color:#04120a}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(74,222,128,.3)}
+  .btn-ghost{border:1px solid var(--line-bright);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(74,222,128,.05)}
+
+  /* status chip */
+  .status{
+    display:inline-flex;align-items:flex-start;gap:10px;margin-top:52px;max-width:100%;
+    font-family:var(--mono);font-size:12.5px;color:var(--ink-dim);line-height:1.5;
+    padding:10px 16px;border:1px solid var(--line);border-radius:16px;
+    background:var(--panel);
+    opacity:0;animation:fadeUp .7s .85s forwards;
+  }
+  .status .live{flex:none;margin-top:5px;width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);animation:pulse 2s ease-in-out infinite}
+
+  /* ---------- section frame ---------- */
+  section{position:relative;z-index:1;padding:82px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:52px}
+  .sec-num{font-family:var(--mono);font-size:13px;color:var(--accent-dim);color:var(--accent);opacity:.6}
+  .sec-title{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,3.5vw,2.3rem);letter-spacing:-.03em}
+  .sec-rule{flex:1;height:1px;background:var(--line);align-self:center;margin-left:8px}
+
+  .reveal-on-scroll{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal-on-scroll.in{opacity:1;transform:none}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:40px}}
+  .about-body p{color:var(--ink-dim);font-size:1.06rem;margin-bottom:20px}
+  .about-body p strong{color:var(--ink);font-weight:500}
+  .about-body .hl{color:var(--accent);font-weight:500}
+
+  .facts{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+  .fact{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .fact:last-child{border-bottom:none}
+  .fact .k{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em}
+  .fact .v{font-size:14px;text-align:right;font-weight:500}
+  .fact .v small{display:block;color:var(--ink-dim);font-weight:400;font-size:12.5px}
+
+  /* ---------- experience timeline ---------- */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--accent),var(--line) 60%)}
+  .node{position:relative;padding-bottom:44px}
+  .node:last-child{padding-bottom:0}
+  .node::before{
+    content:"";position:absolute;left:-34px;top:6px;width:15px;height:15px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--line-bright);transition:all .3s;
+  }
+  .node.active::before{border-color:var(--accent);box-shadow:0 0 0 4px rgba(74,222,128,.12)}
+  .node .when{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:8px;letter-spacing:.02em}
+  .node .role{font-family:var(--display);font-size:1.22rem;font-weight:600;letter-spacing:-.02em;margin-bottom:3px}
+  .node .org{font-size:14px;color:var(--ink-dim);margin-bottom:14px}
+  .node .org .badge{font-family:var(--mono);font-size:10.5px;color:var(--amber);border:1px solid var(--line-bright);padding:2px 8px;border-radius:5px;margin-left:8px;vertical-align:middle}
+  .node ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .node li{position:relative;padding-left:20px;font-size:14.5px;color:var(--ink-dim)}
+  .node li::before{content:"›";position:absolute;left:2px;top:-1px;color:var(--accent);font-family:var(--mono);font-weight:700}
+
+  /* ---------- focus / skills ---------- */
+  .focus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .card{
+    border:1px solid var(--line);border-radius:14px;padding:26px 24px;background:var(--panel);
+    transition:border-color .3s,transform .3s,background .3s;position:relative;overflow:hidden;
+  }
+  .card::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(74,222,128,.06),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+  .card:hover{border-color:var(--line-bright);transform:translateY(-3px)}
+  .card:hover::after{opacity:1}
+  .card .ic{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px;letter-spacing:.03em}
+  .card h3{font-family:var(--display);font-size:1.08rem;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
+  .card p{font-size:13.5px;color:var(--ink-dim)}
+
+  .stack-wrap{margin-top:42px}
+  .stack-label{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px}
+  .chip{
+    font-family:var(--mono);font-size:12.5px;padding:7px 14px;border-radius:7px;
+    border:1px solid var(--line);color:var(--ink-dim);background:var(--bg-soft);transition:all .2s;
+  }
+  .chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(74,222,128,.05)}
+  .chip.key{border-color:var(--accent-dim);color:var(--accent)}
+
+  /* ---------- learning / coursework ---------- */
+  .learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  @media(max-width:760px){.learn-grid{grid-template-columns:1fr;gap:36px}}
+  .learn-col h4{font-family:var(--mono);font-size:12px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:20px}
+  .learn-item{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:baseline}
+  .learn-item:last-child{border-bottom:none}
+  .learn-item .idx{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+  .learn-item .txt{font-size:14.5px}
+  .learn-item .txt small{display:block;color:var(--ink-dim);font-size:12.5px;font-family:var(--mono);margin-top:2px}
+
+  /* ---------- goals ---------- */
+  .goals{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:760px){.goals{grid-template-columns:1fr}}
+  .goal{
+    position:relative;border:1px solid var(--line);border-radius:16px;
+    padding:34px 30px 30px;background:linear-gradient(160deg,var(--panel),var(--bg-soft));
+    overflow:hidden;transition:border-color .3s,transform .3s;
+  }
+  .goal:hover{border-color:var(--line-bright);transform:translateY(-3px)}
+  .goal::before{
+    content:attr(data-n);position:absolute;top:-14px;right:14px;
+    font-family:var(--display);font-weight:700;font-size:6.5rem;line-height:1;
+    color:var(--line);opacity:.5;pointer-events:none;letter-spacing:-.04em;
+  }
+  .goal .tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.04em;margin-bottom:16px;text-transform:uppercase}
+  .goal .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  .goal h3{font-family:var(--display);font-size:1.35rem;font-weight:600;letter-spacing:-.02em;margin-bottom:12px;position:relative;z-index:1}
+  .goal p{font-size:14.5px;color:var(--ink-dim);position:relative;z-index:1}
 
 
-/* project image zoom effect */
+  .contact{text-align:center;padding:100px 0 70px}
+  .contact .big{font-family:var(--display);font-weight:700;font-size:clamp(2rem,5.5vw,3.6rem);letter-spacing:-.035em;margin-bottom:22px;line-height:1.02}
+  .contact .big .glow{color:var(--accent);text-shadow:0 0 40px rgba(74,222,128,.3)}
+  .contact p{color:var(--ink-dim);max-width:440px;margin:0 auto 38px;font-size:1.05rem}
+  .links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-.zoom-effect {
-  overflow: hidden;
-  transition: transform 0.3s ease-out;
-}
+  footer{border-top:1px solid var(--line);position:relative;z-index:1}
+  .foot-inner{max-width:1080px;margin:0 auto;padding:26px max(24px,env(safe-area-inset-left));display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--ink-faint);flex-wrap:wrap;gap:12px}
+  @media(min-width:768px){.foot-inner{padding-left:32px;padding-right:32px}}
 
-.zoom-effect:hover {
-  transform: scale(1.05);
-}
+  /* ---------- phone refinements ---------- */
+  @media(max-width:560px){
+    header{padding:132px 0 64px}
+    section{padding:60px 0}
+    .sec-head{margin-bottom:36px;gap:12px}
+    .sec-rule{display:none}
+    h1{font-size:clamp(2.3rem,10vw,3rem)}
+    .lede{font-size:1.04rem}
+    .status{margin-top:38px}
+    /* full-width tap targets */
+    .cta-row{gap:10px}
+    .cta-row .btn{flex:1 1 100%;justify-content:center}
+    .links{gap:10px}
+    .links .btn{flex:1 1 100%;justify-content:center}
+    .contact{padding:72px 0 56px}
+  }
 
-/* Certificates styling */
-.certificate-card {
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 12px;
-  background: #fff;
-  width: 100%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-  margin-bottom: 20px;
-}
-.certificate-card .thumb {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 4px;
-}
-.certificate-meta {
-  padding-top: 10px;
-}
+  /* tablet: two-up focus + goals stay comfy */
+  @media(min-width:641px) and (max-width:900px){
+    .focus-grid{grid-template-columns:repeat(2,1fr)}
+  }
 
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    h1 .line span,.eyebrow,.lede,.cta-row,.status{opacity:1!important;transform:none!important}
+    .reveal-on-scroll{opacity:1!important;transform:none!important}
+  }
 </style>
+</head>
+<body>
+<div class="grid-bg"></div>
 
+<!-- ========================================================================
+     === SECTION: NAVBAR ===  (top menu bar + mobile hamburger menu)
+     ======================================================================== -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>pranay.kumar</div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="#focus">focus</a>
+      <a href="#learning">learning</a>
+      <a href="#goals">goals</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
 
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-      
-      
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Pranay Kumar</a>
-        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
-        </button>
+<!-- ========================================================================
+     === SECTION: HERO ===  (big headline at the top — "Building AI...")
+     ======================================================================== -->
+<header>
+  <div class="wrap">
+    <div class="eyebrow"><span class="bracket">[</span> AI Researcher · ML / DL · Computer Vision <span class="bracket">]</span></div>
+    <h1>
+      <span class="line"><span>Building AI that</span></span>
+      <span class="line"><span>holds up under <em class="glow">pressure</em>.</span></span>
+    </h1>
+    <p class="lede">I'm an Integrated M.Tech student and AI researcher currently working in <strong>AI security</strong> — the robustness and trustworthiness of vision-language models and deep networks. Curious by default and <strong>open to every domain</strong> where hard, unsolved problems live.</p>
+    <div class="cta-row">
+      <a href="#work" class="btn btn-solid">View research →</a>
+      <a href="PranayKumar_CV.pdf" download class="btn btn-ghost">Download CV ↓</a>
+      <a href="mailto:pranay7427@gmail.com" class="btn btn-ghost">Get in touch</a>
+    </div>
+    <div class="status"><span class="live"></span>Currently: Research Intern @ IISER Bhopal — security & robustness of VLMs</div>
+  </div>
+</header>
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav nav ml-auto">
-            <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-            <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-            <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-            <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
-            <li class="nav-item"><a href="#certificate-section" class="nav-link"><span>Certificates</span></a></li>
-            <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-          </ul>
-        </div>
+<!-- ========================================================================
+     === SECTION: ABOUT ===  (About paragraphs + quick-facts box)
+     ======================================================================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">About</h2>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="about-grid reveal-on-scroll">
+      <div class="about-body">
+        <p>I'm a <strong>4th-year Integrated M.Tech student</strong> in Information Technology at IIPS, DAVV, and I spend most of my time on a single question: <span class="hl">how do AI systems fail, and how do we make them reliable?</span></p>
+        <p>My research so far has centered on <strong>adversarial robustness</strong> and the security of vision-language models and deep neural networks — work I've been fortunate to pursue at <strong>IISER Bhopal</strong> and <strong>IIT Bhubaneswar</strong>. That's my current home base, but not my ceiling.</p>
+        <p>These days I'm exploring <strong>VLMs and generative models</strong> more broadly, along with <strong>3D geometry for computer vision</strong> and <strong>agentic AI</strong> — and I stay open across domains, always chasing the next place where trustworthy AI still falls short.</p>
       </div>
-    </nav>
-    <section id="home-section" class="hero">
-      <div class="home-slider  owl-carousel">
-         <div class="slider-item ">
-          <div class="overlay"></div>
-           <div class="container">
-            <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-              <div class="one-third js-fullheight order-md-last img" style="background-image:url(images/jesu.png);">
-               <div class="overlay"></div>
-              </div>
-                <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                  <div class="text">
-                    <span class="subheading">Holla!</span>
-                      <h1 class="mb-4 mt-3">I'm <span>Pranay Kumar</span></h1>
-
-            
-                        <!-- Element to contain animated typing -->
-                        <span id="typing-animation"></span>
-
-                        <script>
-
-                        // Initialize the typing animation
-                        const typingAnimationElement = document.getElementById('typing-animation');
-
-                        // Create an array of typing text
-                        const typingTexts = [
-                        'Student  ',
-                        // 'Software Devoloper ',
-                        // '   ',
-                        ];
-
-                        // Create a function to display the typing animation for a given text
-                        function playTypingAnimation(text) {
-                        // Loop through each character and add it to the element
-                        for (let i = 0; i < text.length; i++) {
-                            setTimeout(() => {
-                            typingAnimationElement.textContent += text[i];
-                            }, i * 200); // Increase the delay to slow down the typing animation
-                        }
-
-                        // Once the animation is complete, reset the text and start over
-                        setTimeout(() => {
-                            typingAnimationElement.textContent = '';
-                            playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-                        }, text.length * 200);
-                        }
-
-                        // Start the typing animation loop
-                        playTypingAnimation(typingTexts[0]);
-
-                        </script>
-
-                        
-                        <br>
-                        <br>
-                        <h2>Software Engineer</h2>
-                        <h2 class="d-flex" style="margin-bottom: 0">Fresher</h2> 
-                         <br> 
-                         <p> <a href="https://github.com/pranay7427" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
-                        
-                     </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-    </section>
-
-
-
-
-    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-      <div class="container">
-        <div class="row">
-          <div class="row d-flex align-items-stretch"> 
-           <div class="row d-flex"> 
-            <div class="col-md-6 col-lg-5 d-flex">
-              <div class="img-about img d-flex align-items-stretch">
-                <div class="overlay">
-                  <div class="row">
-                    <div class="col-sm-6 col-md-5">
-                      <div class="about-img">
-                        <!-- <img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt=""> -->
-                      </div>
-                    </div>
-                     Details next to profile image 
-                    <div class="col-sm-6 col-md-7">
-                      <div class="about-info">
-                        <p><span class="title-s">Name: </span> <span>Pranay Kumar</span></p>
-                        <p><span class="title-s">Job Role: </span> <span>N.A.</span></p>
-                        <p><span class="title-s">Experience: </span> <span>Fresher</span></p>
-                        <p><span class="title-s">Address: </span> <span>Indore, India</span></p>
-                      </div>
-                    </div>
-                  </div>
-
-                        <div class="skill-mf">
-                          <p class="title-s">Skills</p>
-                          <span>SQL</span> <span class="pull-right">50%</span>
-                          <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="95" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                          </div>
-                          
-                          <span>PYTHON</span> <span class="pull-right">80%</span>
-                          <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="85" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                          </div>
-                          
-                          <span>DSA</span> <span class="pull-right">90%</span>
-                          <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                          </div>
-                          
-                          <span>C++</span> <span class="pull-right">95%</span>
-                          <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="85" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                          </div>
-                          
-                          <span>Deep Learning</span> <span class="pull-right">30%</span>
-                          <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="80" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-              <div class="row justify-content-start pb-3">
-                <div class="col-md-12 heading-section ftco-animate">
-                  
-                  <h1 class="big">About</h1>
-                  <h2 class="mb-4">About Me</h2>
-                  
-                  <p>Fresher with no experience but  qualified software engineer with a passion for problem-solving and a commitment to providing quality software solutions.
-                   Seeking to join Company and use my knowledge and experience to create innovative solutions.</p>
-                  <ul class="about-info mt-4 px-md-0 px-2">
-                    <li class="d-flex"><span>Profile:</span> <span>Software Engineer</span></li>
-                    <li class="d-flex"><span>Domain:</span> <span>C++ DSA Python SQL </span></li>
-                    <!-- <li class="d-flex"><span>Education:</span> <span>Btech+Mtech</span></li> -->
-                    <li class="d-flex"><span>Language:</span> <span>English, Hindi</span></li>
-                    <!-- <li class="d-flex"><span>BI Tools:</span> <span>Microsoft Power BI, Looker &amp; Tableau</span></li> -->
-                    <!-- <li class="d-flex"><span>Other Skills:</span> <span></span></li> -->
-                    <li class="d-flex"><span>Interest:</span> <span>Traveling, Travel Photography, Skating </span></li>
-                    
-                  </ul>
-                </div>
-              </div>
-
-
-              <div class="counter-wrap ftco-animate d-flex mt-md-3">
-                <div class="text">
-                  <p class="mb-4">
-                    <!-- <span class="number" data-number="30">0</span> <span>+</span>
-                    <span>&nbsp; Projects completed</span> -->
-                  </p>
-                  <p><a href="https://www.linkedin.com/in/pranay-kumar7427/" class="btn btn-primary py-3 px-3">LinkedIn</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="facts">
+        <div class="fact"><span class="k">Focus</span><span class="v">AI Security<small>open to all domains</small></span></div>
+        <div class="fact"><span class="k">Program</span><span class="v">Int. M.Tech, IT<small>IIPS · DAVV · CGPA 7.57</small></span></div>
+        <div class="fact"><span class="k">Based in</span><span class="v">Indore, India</small></span></div>
+        <div class="fact"><span class="k">Languages</span><span class="v">English · Hindi</span></div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
+<!-- ========================================================================
+     === SECTION: WORK ===  (research & experience timeline)
+     To add a job: copy one <div class="node"> ... </div> block below.
+     ======================================================================== -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Research &amp; Experience</h2>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="timeline reveal-on-scroll">
 
-
-
-    <section class="ftco-section ftco-no-pb" id="resume-section">
-      <div class="container">
-        <div class="row justify-content-center pb-5">
-          <div class="col-md-10 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Resume</h1>
-            <h2 class="mb-4">Resume</h2>
-            <p>A highly passionate and hard-working software engineer with a passion for problem-solving and a commitment to providing quality software solutions
-        . Seeking to join ABC Company and use my knowledge and experience to create innovative solutions.</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <h1 class="big-4">Experience</h1>
-          <div class="underline"></div>
-        </div>
-        <br>
-
-        
-
-        <br>
-        <br>
-
-        <div class="row">
-          <h1 class="big-4">Education</h1>
-          <div class="underline"></div>
-        </div>
-        <br>
-        
-            <div class="row">
-                <div class="col-md-6">
-                  <div class="resume-wrap ftco-animate">
-                    <span class="date">2023-present</span>
-                    <h2>Bachelors of Technology + Masters of Technology </h2>
-                    <span class="position">Institute of Proffesional Studies , DAVV</span>
-                    <p class="mt-4">Grade:</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="resume-wrap ftco-animate">
-                    <span class="date">2022-2023</span>
-                    <h2>Higher Secondary School</h2>
-                    <span class="position">Modern Academy</span>
-                    <p class="mt-4">Grade: 85%.</p>
-                  </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center mt-5">
-                <div class="col-md-6 text-center ftco-animate">
-                  <p><a href="#" class="btn btn-primary py-4 px-5">Download CV</a></p>
-                </div>
-            </div>
+      <div class="node active">
+        <div class="when">Present</div>
+        <div class="role">Research Intern</div>
+        <div class="org">IISER Bhopal<span class="badge">CURRENT</span></div>
+        <ul>
+          <li>Researching the security and robustness of Vision-Language Models (VLMs)</li>
+          <li>Probing how multimodal systems behave — and break — outside clean benchmarks</li>
+        </ul>
       </div>
-    </section>
 
-    <!-- Certificates Section -->
-    <section class="ftco-section" id="certificate-section">
-      <div class="container">
-        <div class="row justify-content-center pb-5">
-          <div class="col-md-10 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Certificates</h1>
-            <h2 class="mb-4">My Certificates</h2>
-            <p>Below are some certifications I've completed. Click any card to view the full certificate image.</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <!-- Certificate 1: Programming with Generative AI (IISc Bangalore) -->
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="certificate-card">
-              <!-- thumbnail links to the full-size image in images/ -->
-              <a href="images/cert1.jpg" target="_blank" rel="noopener noreferrer" class="thumb zoom-effect" style="background-image: url('images/cert1.jpg'); display:block;" aria-label="Programming with Generative AI certificate"></a>
-              <div class="certificate-meta">
-                <h3 class="heading"><a href="images/cert1.jpg" target="_blank" rel="noopener noreferrer">Programming with Generative AI</a></h3>
-                <p>Indian Institute of Science, Bangalore — Aug–Oct 2025</p>
-                <p><a href="images/cert1.jpg" target="_blank" class="btn btn-primary btn-sm">View full image</a></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Certificate 2: Introduction to Large Language Models (IIT Madras) -->
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="certificate-card">
-              <a href="images/cert2.jpg" target="_blank" rel="noopener noreferrer" class="thumb zoom-effect" style="background-image: url('images/cert2.jpg'); display:block;" aria-label="Introduction to Large Language Models certificate"></a>
-              <div class="certificate-meta">
-                <h3 class="heading"><a href="images/cert2.jpg" target="_blank" rel="noopener noreferrer">Introduction to Large Language Models (LLMs)</a></h3>
-                <p>Indian Institute of Technology Madras — Jul–Oct 2025</p>
-                <p><a href="images/cert2.jpg" target="_blank" class="btn btn-primary btn-sm">View full image</a></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Certificate 3: Social Network Analysis (IIT Madras) -->
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="certificate-card">
-              <a href="images/cert3.jpg" target="_blank" rel="noopener noreferrer" class="thumb zoom-effect" style="background-image: url('images/cert3.jpg'); display:block;" aria-label="Social Network Analysis certificate"></a>
-              <div class="certificate-meta">
-                <h3 class="heading"><a href="images/cert3.jpg" target="_blank" rel="noopener noreferrer">Social Network Analysis</a></h3>
-                <p>Indian Institute of Technology Madras — Jul–Oct 2025</p>
-                <p><a href="images/cert3.jpg" target="_blank" class="btn btn-primary btn-sm">View full image</a></p>
-              </div>
-            </div>
-          </div>
-
-        </div> <!-- .row -->
-        <div class="row justify-content-center mt-4">
-          <div class="col-md-8 text-center">
-            <p class="small">If you want these to open in a lightbox/modal instead of a new tab, or to add PDF downloads, I can update that. Also tell me if you prefer different filenames or paths for the images.</p>
-          </div>
-        </div>
+      <div class="node">
+        <div class="when">Dec 2025 — Feb 2026</div>
+        <div class="role">Research Intern</div>
+        <div class="org">IIT Bhubaneswar (Remote)<span class="badge">× MICROSOFT INDIA</span></div>
+        <ul>
+          <li>Built an LLM-based Trip Planner in collaboration with Microsoft India</li>
+          <li>Designed structured trip plans used for model evaluation and benchmarking</li>
+        </ul>
       </div>
-    </section>
-    <!-- End Certificates Section -->
 
-   
+      <div class="node">
+        <div class="when">May 2025 — Jul 2025</div>
+        <div class="role">Research Intern</div>
+        <div class="org">IISER Bhopal</div>
+        <ul>
+          <li>Ran experiments on the ICLR 2025 paper <em>Democratic Training Against Universal Adversarial Perturbations</em></li>
+          <li>Fine-tuned deep learning models to strengthen adversarial robustness</li>
+          <li>Implemented entropy regularization and inter-layer agreement techniques for improved defense</li>
+        </ul>
+      </div>
 
-    
+    </div>
+  </div>
+</section>
 
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contact Me</h2>
-            <p>Below are the details to reach out to me!</p>
-          </div>
-        </div>
+<!-- ========================================================================
+     === SECTION: FOCUS ===  ("What I Work On" cards + skills/tags)
+     To add a skill: copy one <span class="chip">...</span> in the chips lists.
+     ======================================================================== -->
+<section id="focus">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">What I Work On</h2>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="focus-grid reveal-on-scroll">
+      <div class="card tilt">
+        <div class="ic">// 01</div>
+        <h3>Adversarial Robustness</h3>
+        <p>Making DNNs and VLMs hold their ground against universal perturbations and crafted attacks.</p>
+      </div>
+      <div class="card tilt">
+        <div class="ic">// 02</div>
+        <h3>VLM &amp; Model Security</h3>
+        <p>Understanding failure modes of multimodal systems and building defenses that transfer to the real world.</p>
+      </div>
+      <div class="card tilt">
+        <div class="ic">// 03</div>
+        <h3>Generative Models</h3>
+        <p>Exploring generative AI and LLMs — capabilities, limits, and where trust breaks down.</p>
+      </div>
+      <div class="card tilt">
+        <div class="ic">// 04</div>
+        <h3>3D Geometry for Vision</h3>
+        <p>Exploring the geometry behind computer vision — how spatial structure is recovered and represented.</p>
+      </div>
+      <div class="card tilt">
+        <div class="ic">// 05</div>
+        <h3>Agentic AI</h3>
+        <p>Studying how models plan, use tools, and act — and what reliability means once they take initiative.</p>
+      </div>
+      <div class="card tilt">
+        <div class="ic">// 06</div>
+        <h3>Open Terrain</h3>
+        <p>Domain-agnostic by choice. Wherever a hard, unsolved problem lives, I'm interested.</p>
+      </div>
+    </div>
 
-        <div class="row d-flex contact-info mb-5">
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-map-signs"></span>
-              </div>
-              <h3 class="mb-4">Address</h3>
-                <p>Indore, India</p>
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-phone2"></span>
-              </div>
-              <h3 class="mb-4">Contact Number</h3>
-                <p><a href="tel://0101010101">+91 9098805728</a></p>
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-paper-plane"></span>
-              </div>
-              <h3 class="mb-4">Email Address</h3>
-                <p><a href="mailto:pranay7427@gmail.com">pranay7427@gmail.com</a></p>
-              </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-globe"></span>
-              </div>
-              <h3 class="mb-4">Download Resume</h3>
-                <p><a href="#">resumelink</a></p>
-              </div>
-          </div>
+    <div class="stack-wrap reveal-on-scroll">
+      <div class="stack-label">Languages</div>
+      <div class="chips">
+        <span class="chip key">Python</span>
+        <span class="chip">C++</span>
+        <span class="chip">MySQL</span>
+      </div>
+      <div class="stack-label">Frameworks &amp; Libraries</div>
+      <div class="chips">
+        <span class="chip key">PyTorch</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">Matplotlib</span>
+      </div>
+      <div class="stack-label">AI / ML Domains</div>
+      <div class="chips">
+        <span class="chip">Deep Learning</span>
+        <span class="chip">Computer Vision</span>
+        <span class="chip">Transformers</span>
+        <span class="chip">LLMs</span>
+        <span class="chip key">Vision-Language Models</span>
+        <span class="chip key">Adversarial Robustness</span>
+        <span class="chip">Generative AI</span>
+        <span class="chip">3D Geometry</span>
+        <span class="chip">Agentic AI</span>
+        <span class="chip">Social Network Analysis</span>
+        <span class="chip">Data Structures</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <div class="container">
-            <br>
-            <br>
-            <div class="row justify-content-center">
-                <div class="col-md-7 ftco-animate text-center">
-                  <h2>Have a<span> Question?  </span> <a href="#" class="btn btn-primary py-3 px-5">Click Here</a> </h2>
-                </div>
-            </div>
-                <br>
-                    <ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-                      <li class="ftco-animate normal-txt">Find me on  </li>
-                      <li class="ftco-animate"><a href="https://youtube.com/@pranay7427?si=qZ75kb8CVF3sJsUS" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel"><span class="icon-youtube"></span></a></li>
-                      <li class="ftco-animate"><a href="https://www.linkedin.com/in/pranay-kumar7427/"><span class="icon-linkedin"></span></a></li>  
-                      <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                      <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                      <li class="ftco-animate"><a href="https://www.instagram.com/Pranay7427/"><span class="icon-instagram"></span></a></li>
-                    </ul>
-                <br>
-           </div>
-   </div>
- </section>
+<!-- ========================================================================
+     === SECTION: LEARNING ===  (coursework + presentations/workshops)
+     ======================================================================== -->
+<section id="learning">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Learning &amp; Presence</h2>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="learn-grid reveal-on-scroll">
+      <div class="learn-col">
+        <h4>NPTEL Coursework</h4>
+        <div class="learn-item"><span class="idx">01</span><span class="txt">Deep Learning for Computer Vision</span></div>
+        <div class="learn-item"><span class="idx">02</span><span class="txt">Introduction to Large Language Models</span></div>
+        <div class="learn-item"><span class="idx">03</span><span class="txt">Programming with Generative AI</span></div>
+        <div class="learn-item"><span class="idx">04</span><span class="txt">Social Network Analysis</span></div>
+      </div>
+      <div class="learn-col">
+        <h4>Presentations &amp; Workshops</h4>
+        <div class="learn-item"><span class="idx">↗</span><span class="txt">Presenter — Adversarial robustness &amp; democratic training<small>Jul 2025</small></span></div>
+        <div class="learn-item"><span class="idx">↗</span><span class="txt">Workshop — Data forgetting &amp; ethical generative AI<small>Jun 2025</small></span></div>
+        <div class="learn-item"><span class="idx">↗</span><span class="txt">Symposium — AI diagnostics &amp; medical imaging<small>Mar 2025</small></span></div>
+        <div class="learn-item"><span class="idx">↗</span><span class="txt">Workshops — AI ethics, LLMs &amp; interpretability<small>2025</small></span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ========================================================================
+     === SECTION: GOALS ===  ("Where I'm Headed" cards)
+     ======================================================================== -->
+<section id="goals">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">Where I'm Headed</h2>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="goals reveal-on-scroll">
+      <div class="goal" data-n="01">
+        <span class="tag">Near-term</span>
+        <h3>Publish at a top-tier venue</h3>
+        <p>Turn my robustness and VLM work into a first-author paper at a leading AI conference — ICLR, NeurIPS, CVPR, or the like.</p>
+      </div>
+      <div class="goal" data-n="02">
+        <span class="tag">Ongoing</span>
+        <h3>Ship real R&amp;D</h3>
+        <p>Work on research and development projects that leave the lab — systems that get built, deployed, and stress-tested in the real world.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
- 
-    
-    <footer class="ftco-footer ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-    
-              <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="http://colorlib.com" target="_blank" rel="noopener noreferrer">Colorlib</a>
-    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-            </div>
-          </div>
-        </div>
-      </footer>
+<!-- ========================================================================
+     === SECTION: CONTACT ===  (contact links + footer below)
+     Edit your email / phone / LinkedIn / GitHub links here.
+     ======================================================================== -->
+<section id="contact" class="contact">
+  <div class="wrap reveal-on-scroll">
+    <div class="big">Let's talk about<br>the <span class="glow">next hard problem.</span></div>
+    <p>Open to research collaborations, internships, and conversations across any domain of AI.</p>
+    <div class="links">
+      <a href="mailto:pranay7427@gmail.com" class="btn btn-solid">pranay7427@gmail.com</a>
+      <a href="PranayKumar_CV.pdf" download class="btn btn-ghost">Download CV ↓</a>
+      <a href="tel:+919098805728" class="btn btn-ghost">+91 90988 05728</a>
+      <a href="https://www.linkedin.com/in/pranay-kumar7427" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/Pranay7427" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+    </div>
+  </div>
+</section>
 
+<footer>
+  <div class="foot-inner">
+    <span>© 2026 Pranay Kumar</span>
+    <span>Built to break, then hold — Indore, India</span>
+  </div>
+</footer>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#F96D00"/></svg></div>
+<!-- ========================================================================
+     === SECTION: SCRIPTS ===  (JavaScript — menu toggle, scroll animations)
+     ======================================================================== -->
+<script>
+  // nav border on scroll
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
 
+  // mobile menu
+  const menuBtn=document.getElementById('menuBtn');
+  const navLinks=document.getElementById('navLinks');
+  menuBtn.addEventListener('click',()=>{
+    const open=navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded',open);
+  });
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    navLinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded','false');
+  }));
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  
-  <script src="js/main.js"></script>
-    
-  </body>
+  // scroll reveals
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.14});
+  document.querySelectorAll('.reveal-on-scroll').forEach(el=>io.observe(el));
+
+  // timeline node activation on scroll
+  const nodes=[...document.querySelectorAll('.node')];
+  const nio=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active')});
+  },{threshold:.55,rootMargin:'-20% 0px -20% 0px'});
+  nodes.forEach(n=>nio.observe(n));
+
+  // card cursor glow
+  document.querySelectorAll('.tilt').forEach(c=>{
+    c.addEventListener('pointermove',e=>{
+      const r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      c.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+</script>
+</body>
 </html>
